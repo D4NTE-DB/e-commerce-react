@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card, Carousel } from 'react-bootstrap';
+import { Row, Col, Card, Carousel, Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 // import { Link } from 'react-router-dom';
 import '../App.css'
@@ -11,16 +11,13 @@ const ProductCard = () => {
     return (
         <div>
             <h2>Products</h2>
-            <h3>{products[0]?.title}</h3>
             {products.map((prod) => (
                 <Row key={prod.id}xs={1} md={2} className="g-4">
                     {Array.from({ length: 4 }).map((_, idx) => (
                         <Col key={idx}>
-                            <Card bg='info'>
-                                {/* <Card.Img variant="top" src={`${prod.images[0].url}`} /> */}
-                                {/* <Link to='/chdet'/> */}
+                            <Card bg='light'>
                                 <Carousel>
-                                    <Carousel.Item>
+                                    <Carousel.Item className='ca-img'>
                                         <img
                                             className="d-block w-100"
                                             src={`${prod.images[0].url}`}
@@ -48,17 +45,18 @@ const ProductCard = () => {
                                     <Card.Title>{prod.title}</Card.Title>
                                     <Card.Text>
 
-                                        {prod.description}
+                                       $ {prod.price}
 
                                     </Card.Text>
                                     <Card.Footer>
                                         <small className="text-muted">Created At: {prod.createdAt}</small>
                                         <br />
                                         <small className="text-muted">Updated At: {prod.updatedAt}</small>
-
                                     </Card.Footer>
                                 </Card.Body>
-
+                                <Button variant="danger" >
+                                <box-icon name='shopping-bag'></box-icon>
+                                </Button>
                             </Card>
                         </Col>
                     ))}
