@@ -6,12 +6,13 @@ import Home from './components/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'boxicons'
 import ProductCard from './components/ProductCard'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from './store/slices/products.slice'
 import ProductDetails from './components/ProductDetails'
 import Purchases from './components/Purchases'
 import Login from './components/Login'
 import AppNavbar from './components/AppNavbar'
+import LoadingScreen from './components/LoadingScreen'
 
 
 function App() {
@@ -24,9 +25,12 @@ function App() {
     dispatch(getProducts())
   }, [])
 
+  const isLoading = useSelector(state => state.isLoading)
+
   return (
     <HashRouter>
         <AppNavbar />
+        {isLoading && <LoadingScreen/>}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
