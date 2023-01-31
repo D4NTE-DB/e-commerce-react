@@ -9,6 +9,7 @@ import 'boxicons'
 import ProductCard from './components/ProductCard'
 import { useDispatch } from 'react-redux'
 import { getProducts } from './store/slices/products.slice'
+import ProductDetails from './components/ProductDetails'
 
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/chd' element={<ProductCard />} />
+        <Route path='/chdet' element={<ProductDetails/>}/>
       </Routes>
     </HashRouter>
   )

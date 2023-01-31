@@ -1,23 +1,24 @@
 import React from 'react';
 import { Row, Col, Card, Carousel } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+// import { Link } from 'react-router-dom';
 import '../App.css'
 
 const ProductCard = () => {
 
     const products = useSelector((state) => state.products)
-    console.log(products[0].description)
-
-    console.log(products)
+    
     return (
         <div>
             <h2>Products</h2>
+            <h3>{products[0]?.title}</h3>
             {products.map((prod) => (
-                <Row xs={1} md={2} className="g-4">
+                <Row key={prod.id}xs={1} md={2} className="g-4">
                     {Array.from({ length: 4 }).map((_, idx) => (
-                        <Col>
-                            <Card key={prod.id} bg='info'>
+                        <Col key={idx}>
+                            <Card bg='info'>
                                 {/* <Card.Img variant="top" src={`${prod.images[0].url}`} /> */}
+                                {/* <Link to='/chdet'/> */}
                                 <Carousel>
                                     <Carousel.Item>
                                         <img
@@ -42,6 +43,7 @@ const ProductCard = () => {
                                         />
                                     </Carousel.Item>
                                 </Carousel>
+                                {/* <Link/> */}
                                 <Card.Body>
                                     <Card.Title>{prod.title}</Card.Title>
                                     <Card.Text>
